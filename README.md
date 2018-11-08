@@ -1,8 +1,3 @@
 # SendIT-Api
 
-Badges
-Travis  Build Status
-
-Coverage  Coverage Status
-
-Maintainability
+SendIT is a courier service that helps users deliver parcels to different destinations. SendIT provides courier quotes based on weight categories.
