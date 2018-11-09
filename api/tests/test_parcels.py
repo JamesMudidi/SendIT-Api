@@ -24,7 +24,7 @@ class TestViews(unittest.TestCase):
         result = self.client().post('api/v1/parcels',
                                     content_type="application/json",
                                     data=json.dumps(dict(parcel_id=1, user_name="James",email="mudidi.jimmy@gmail.com", parcel_name="chair", pickup_location="Kampala",destination="kampala", price =10000 ,
-                                                         )))
+                                                            )))
         respond = json.loads(result.data.decode("utf8"))
         self.assertIn('Parcel_orders', respond)
         self.assertIsInstance(respond, dict)
@@ -33,7 +33,7 @@ class TestViews(unittest.TestCase):
 
     def test_missing_field(self):
         """
-            Test for missing field in the post function
+            Method for testing a missing field in the post function
         """
         result = self.client().post('api/v1/parcels',
                                     content_type="application/json",
