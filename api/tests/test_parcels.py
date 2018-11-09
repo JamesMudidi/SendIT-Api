@@ -19,7 +19,7 @@ class TestViews(unittest.TestCase):
 
     def test_make_a_parcel(self):
         """
-            Test for post function which posts a parcel order
+            Test for post function which posts a parcel_order
         """
         result = self.client().post('api/v1/parcels',
                                     content_type="application/json",
