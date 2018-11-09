@@ -19,12 +19,12 @@ class TestViews(unittest.TestCase):
 
     def test_make_a_parcel(self):
         """
-            Test for post function which posts a parcel_order
+            Method for tesing the post function which posts a parcel_order
         """
         result = self.client().post('api/v1/parcels',
                                     content_type="application/json",
-                                    data=json.dumps(dict(parcel_id=1, user_name="James",email="mudidi.jimmy@gmail.com", parcel_name="chair", pickup_location="Kampala",destination="kampala", price =10000 ,
-                                                            )))
+                                    data=json.dumps(dict(parcel_id=1, user_name="James",email="mudidi.jimmy@gmail.com", parcel_name="chair", pickup_location="kololo",destination="kampala", price =10000 ,
+                                                         )))
         respond = json.loads(result.data.decode("utf8"))
         self.assertIn('Parcel_orders', respond)
         self.assertIsInstance(respond, dict)
@@ -37,7 +37,7 @@ class TestViews(unittest.TestCase):
         """
         result = self.client().post('api/v1/parcels',
                                     content_type="application/json",
-                                    data=json.dumps(dict(parcel_id=18, user_name="James",email="mudidi.jimmy@gmail.com", parcel_name="chair", pickup="Kampala"  
+                                    data=json.dumps(dict(parcel_id=10, user_name="James",email="mudidi.jimmy@gmail.com", parcel_name="chair", pickup="Kampala"  
                                                          )))
         respond = json.loads(result.data.decode("utf8"))
         self.assertIn('Blank space', respond)
@@ -49,7 +49,7 @@ class TestViews(unittest.TestCase):
         """
         result = self.client().post('api/v1/parcels',
                                     content_type="application/json",
-                                    data=json.dumps(dict(parcel_id=18, user_name="James",email="", parcel_name="chair", pickup="Kampala"  
+                                    data=json.dumps(dict(parcel_id=10, user_name="James",email="", parcel_name="chair", pickup="Kampala"  
                                                          )))
         respond = json.loads(result.data.decode("utf8"))
         self.assertIn('Blank space', respond)
