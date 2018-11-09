@@ -1,5 +1,5 @@
 """
-   Module for defining views
+   Defining views
 """
 
 from flask import jsonify, request
@@ -12,10 +12,11 @@ parcel_orders = ParcelOrder()
 
 class GetParcelOrders(MethodView):
     """
-       class for defining views
+       Defining views
+
     """
 
-    def post(self)
+    def post(self):
         """
            method to post all requests
         """
