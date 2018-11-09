@@ -25,8 +25,8 @@ class TestViews(unittest.TestCase):
                                     content_type="application/json",
                                     data=json.dumps(dict(parcel_id=1, user_name="James",email="mudidi.jimmy@gmail.com", parcel_name="chair", pickup_location="Kampala",destination="kampala", price =10000 ,
                                                          )))
-        respond = json.loads(result.data.decode("utf8"))
-        self.assertIn('Blank Space', respond)
+         respond = json.loads(result.data.decode("utf8"))
+        self.assertIn('Parcel_orders', respond)
         self.assertIsInstance(respond, dict)
         self.assertEqual(result.status_code, 201)
         self.assertTrue(result.json["Parcel_orders"])
