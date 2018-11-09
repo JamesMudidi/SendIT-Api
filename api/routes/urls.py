@@ -1,5 +1,5 @@
 """
-   Class for defining routes
+   Class for defining url / routes
 """
 from api.controllers.views import GetParcelOrders
 class Urls():
@@ -20,4 +20,3 @@ class Urls():
         parcel_order_post = GetParcelOrders.as_view('post_parcels')
         order.add_url_rule('/api/v1/parcels',
                            view_func=parcel_order_post, methods=['POST',])
-        
