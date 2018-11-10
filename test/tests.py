@@ -4,14 +4,12 @@ accepted_data = {
           "pickup": "Bugolobi",
           "destination": "Kireka"
            }
-  
 invalid_data = {
           "parcel_name": "Books",
           "description": 10000,
           "pickup": "Bugolobi",
           "destination": "Kireka"
           }
-  
 blank_fields = {
           "parcel_name": "",
           "description": "",
