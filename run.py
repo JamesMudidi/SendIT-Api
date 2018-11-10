@@ -1,10 +1,15 @@
 """
    Module for running the app
 """
+import os
 from flask import Flask
 from api.routes.urls import Urls
-app = Flask(__name__)
-Urls.fetch_urls(APP)
+
 if __name__ == '__main__':
-    app.run()
-    
+    Urls.fetch_urls(APP)
+    port = int(os.environ.get('PORT', 5000))
+
+    if port == 5000:
+        app.debug = True
+
+    app.run(host='127.0.0.1', port=port)
