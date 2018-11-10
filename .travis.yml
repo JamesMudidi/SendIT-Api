@@ -6,9 +6,10 @@ cache: pip3
 install:
 - pip install -r requirements.txt
 script:
-- pytest --cov=.
+ - py.test --cov-config .coveragerc --cov=api
 - coverage
 - coveralls
 - coverage report
 after_success:
 - coveralls
+- pytest
