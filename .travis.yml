@@ -6,12 +6,16 @@ sudo: false
 
 cache: pip3
 
-install: - pip install -r requirements.txt
+install:
+  - pip install
+  -r requirements.txt
 
 script:
-- pytest --cov=.
-- coverage
-- coveralls
-- coverage report
+  - pytest --cov=.
+  - coverage
+  - coveralls
+  - coverage report
 
-after_success: - coveralls
+after_success:
+  - coveralls
+  - pytest
