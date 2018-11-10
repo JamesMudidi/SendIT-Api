@@ -3,7 +3,7 @@
 """
 import unittest
 import json
-from run import APP
+from run import app
 
 class TestViews(unittest.TestCase):
     """"
@@ -15,7 +15,7 @@ class TestViews(unittest.TestCase):
         """
            Creating a client object
         """
-        self.client = APP.test_client
+        self.client = app.test_client
 
     def test_missing_field(self):
         """
