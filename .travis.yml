@@ -1,0 +1,17 @@
+language: python
+python: - '3.5.2'
+
+install:
+  - pip install -r requirements.txt
+  - pip install pytest-cov
+  - pip install coveralls
+
+script:
+  - py.test --cov-config .coveragerc --cov=Api
+  - coverage
+  - coveralls
+  - coverage report
+
+after_success:
+  - coveralls
+  - pytest
