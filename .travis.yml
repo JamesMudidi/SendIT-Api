@@ -1,14 +1,13 @@
 language: python
 python:
-- '3.5.2'
-sudo: false
-cache: pip3
+  - "3.6"
 install:
-- pip install -r requirements.txt
+  - pip install pytest-cov
+  - pip install coveralls
+  - pip install -r requirements.txt
 script:
-- pytest --cov=.
-- coverage
-- coveralls
-- coverage report
+  - py.test --cov-config .coveragerc --cov=Api
+  - coverage report
 after_success:
-- coveralls
+  - coveralls
+  - pytest
