@@ -1,6 +1,4 @@
-"""
-   Module for running the app
-"""
+""" Module for running the app """
 from api import create_app
 
 app = create_app('development')
