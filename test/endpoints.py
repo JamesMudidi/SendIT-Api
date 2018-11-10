@@ -19,13 +19,13 @@ def client():
 
 #Accepted data test
 def test_post_parcel_orders_endpoint(client):
-    response = client.post('api/v1/parcels', data=json.dumps(test_data.accepted_data))
+    response = client.post('api/v1/parcels', data=json.dumps(tests.accepted_data))
     assert response.status_code == 201
     assert json.loads(response.data)['message'] == 'Order Received'
     
 #Blank spaces test
 def test_white_spaces_in_post_parcel_orders(client):
-    response = client.post('api/v1/parcels', data=json.dumps(test_data.blank_space))
+    response = client.post('api/v1/parcels', data=json.dumps(tests.blank_space))
     assert response.status_code == 400
     assert json.loads(response.data)['error'] == 'No blank spaces allowed'
     
@@ -36,7 +36,7 @@ def test_empty_parcel_order_list(client):
     
 #Single order test
 def test_get_single_parcel_orders(client):
-    response = client.post('api/v1/parcels', data=json.dumps(test_data.accepted_data))
+    response = client.post('api/v1/parcels', data=json.dumps(tests.accepted_data))
     assert response.status_code == 201
     response = client.get('api/v1/parcels/{}'.format(1))
     assert response.status_code == 200
@@ -44,15 +44,15 @@ def test_get_single_parcel_orders(client):
     
 #All orders test
 def test_get_all_parcel_orders(client):
-    response = client.post('api/v1/parcels', data=json.dumps(test_data.accepted_data))
+    response = client.post('api/v1/parcels', data=json.dumps(tests.accepted_data))
     assert response.status_code == 201
     response = client.get('api/v1/parcels')
     assert response.status_code == 200
-    assert json.loads(response.data)['parcel_orders'][0]['description'] == 'has two doors and checks out'
+    assert json.loads(response.data)['parcel_orders'][0]['description'] == 'On the way'
 
 #Empty fields test
 def test_post_parcel_orders_empty_fields(client):
-    response = client.post('api/v1/parcels', data=json.dumps(test.empty_fields))
+    response = client.post('api/v1/parcels', data=json.dumps(test.blank_fields))
     assert response.status_code == 400
     assert json.loads(response.data)['error'] == 'All fields are required'
 
@@ -82,4 +82,4 @@ def test_bad_wrong_status(client):
     #Invalid id test
     response = client.put('/api/v1/parcels/{}'.format(20), data=json.dumps({'status': 'cancel'}))
     assert response.status_code == 200
-    assert json.loads(response.data)['message'] == 'you dont have such product'
+    assert json.loads(response.data)['message'] == 'You dont have such product'
