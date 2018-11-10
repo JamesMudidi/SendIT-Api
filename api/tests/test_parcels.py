@@ -1,15 +1,8 @@
-"""
-    Module for making tests on the application
-"""
-import unittest
+import pytest
+from Api import create_app
 import json
-from run import app
 
 class TestViews(unittest.TestCase):
-    """"
-        Class for making tests
-        params: unittest.testCase
-    """
 
     def setUp(self):
         """
