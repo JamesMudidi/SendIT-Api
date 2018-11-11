@@ -1,13 +1,19 @@
 language: python
+
 python:
   - "3.6"
+
+sudo: false
+cache: pip3
+
 install:
-  - pip install pytest-cov
-  - pip install coveralls
   - pip install -r requirements.txt
+
 script:
   - py.test --cov-config .coveragerc --cov=Api
-  - coverage report
+- coverage
+- coveralls
+- coverage report
+
 after_success:
   - coveralls
-  - pytest
