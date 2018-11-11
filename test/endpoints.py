@@ -1,7 +1,7 @@
 import pytest
 import json
 from api import __init__
-from test import tests.py
+from test import tests
 
 
 @pytest.fixture(scope='module')
