@@ -1,4 +1,5 @@
 language: python
+
 python:
   - "3.6.5"
 install:
@@ -9,5 +10,7 @@ script:
   - coverage
   - coverage3 report
   - coveralls 
+
 after_success:
   - coveralls
+  - codecov
