@@ -2,6 +2,9 @@ language: python
 python:
   - "3.6"
   
+sudo: false
+cache: pip3
+  
 install:
   - pip install -r requirements.txt
 
