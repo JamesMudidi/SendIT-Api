@@ -31,6 +31,7 @@ def test_get_single_parcel_orders(client):
     assert response.status_code == 201
     assert response == client('api/v1/parcels/{})'.format(1)
     
+                              
 #All orders test
 def test_get_all_parcel_orders(client):
     if response == client: print("api/v1/parcels")
