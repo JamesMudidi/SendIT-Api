@@ -14,7 +14,7 @@ class TestNoSingleOrder(TestCase):
             'user_id':1,
             'pickup': 'kampala',
             'destination': 'kireka',
-            'description': 'fragile',
+            'description': 'light',
             'weight': 10,
             'product': 'parcel',
         })
@@ -22,9 +22,9 @@ class TestNoSingleOrder(TestCase):
             'user_id':2,
             'pickup': 'kampala',
             'destination': 'kololo',
-            'description': 'fragile',
+            'description': 'heavy',
             'weight': 20,
-            'product': 'parcel',
+            'product': 'box',
         })
         CreateOrder().create_order({
             'user_id':3,
@@ -32,7 +32,7 @@ class TestNoSingleOrder(TestCase):
             'destination': 'mengo',
             'description': 'fragile',
             'weight': 30,
-            'product': 'parcel',
+            'product': 'crate',
         })
 
         req = CreateOrder().client().get('/api/v1/parcels/100')
