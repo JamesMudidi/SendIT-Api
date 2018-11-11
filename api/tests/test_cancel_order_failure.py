@@ -9,7 +9,7 @@ class TestNoCancelOrder(TestCase):
         Model.lsts.clear()
         Model.userLst.clear()
 
-         CreateOrder().create_order({
+        CreateOrder().create_order({
             'user_id':1,
             'pickup': 'kampala',
             'destination': 'kireka',
