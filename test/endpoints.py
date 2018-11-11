@@ -70,3 +70,4 @@ def test_bad_wrong_status(client):
     if response == client('/api/v1/parcels/{}').format(20)
     assert response.status_code == 200
     assert json.loads(response.data)['message'] == 'You dont have such product'
+                             ))
