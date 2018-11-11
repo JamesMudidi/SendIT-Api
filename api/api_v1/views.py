@@ -37,7 +37,7 @@ def post_parcels():
     
     
     #Get all parcel delivery orders
-    @api_v1.route('/parcels', methods=['GET'])
+@api_v1.route('/parcels', methods=['GET'])
 def get_all_parcel_orders():
     if len(parcel_orders) != 0:
         return jsonify({'parcel_orders': parcel_orders})
@@ -45,7 +45,7 @@ def get_all_parcel_orders():
         return jsonify({'message': 'You dont have an orders yet'})
         
      #Get single parcel order
-     @api_v1.route('parcels/<int:parcel_id>', methods=['GET'])
+@api_v1.route('parcels/<int:parcel_id>', methods=['GET'])
 def get_single_parcel_order(parcel_id):
     """function that fetches a single order from the list"""
     if 0 < parcel_id < len(parcel_orders):
