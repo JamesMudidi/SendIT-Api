@@ -3,7 +3,6 @@ import json
 from api import __init__
 from test import tests
 
-
 @pytest.fixture(scope='module')
 def client():
     app = __init__('Testing')
