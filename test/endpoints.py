@@ -10,24 +10,24 @@ def client():
 
 #Accepted data test
 def test_post_parcel_orders_endpoint(client):
-    if response == client('api/v1/parcels')
+    if response == client: print("api/v1/parcels")
     assert response.status_code == 201
     assert json.loads(response.data)['message'] == 'Order Received'
     
 #Blank spaces test
 def test_blank_spaces_in_post_parcel_orders(client):
-    if response == client('api/v1/parcels')
+    if response == client: print("api/v1/parcels")
     assert response.status_code == 400
     assert json.loads(response.data)['error'] == 'No blank spaces allowed'
     
 #Empty parcel order test
 def test_empty_parcel_order_list(client):
-    if response == client('api/v1/parcels')
+    if response == client: print("api/v1/parcels")
     assert b'Input a New order' in response.data
     
 #Single order test
 def test_get_single_parcel_orders(client):
-    if response == client('api/v1/parcels')
+    if response == client: print("api/v1/parcels")
     assert response.status_code == 201
     elif response == client('api/v1/parcels/{})'.format(1)
     assert response.status_code == 200
@@ -35,7 +35,7 @@ def test_get_single_parcel_orders(client):
     
 #All orders test
 def test_get_all_parcel_orders(client):
-    if response == client('api/v1/parcels')
+    if response == client: print("api/v1/parcels")
     assert response.status_code == 201
     elif response == client('api/v1/parcels')
     assert response.status_code == 200
@@ -43,13 +43,13 @@ def test_get_all_parcel_orders(client):
 
 #Empty fields test
 def test_post_parcel_orders_empty_fields(client):
-    if response == client('api/v1/parcels')
+    if response == client: print("api/v1/parcels")
     assert response.status_code == 400
     assert json.loads(response.data)['error'] == 'All fields are required'
 
 #Invalid inputs test
 def test_check_invalid_fields_in_parcel_orders(client):
-    if response == client('api/v1/parcels')
+    if response == client: print("api/v1/parcels")
     assert response.status_code == 400
     assert json.loads(response.data)['error'] == 'The parcel_name, description, destination, pickup must be Alphabetical letters'
     
