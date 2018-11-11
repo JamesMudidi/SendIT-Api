@@ -9,7 +9,7 @@ class TestStringErrors(TestCase):
             'user_id':1,
             'pickup': 100,
             'destination': 'kireka',
-            'description': 'fragile',
+            'description': 'light',
             'weight': 10,
             'product': 'parcel',
         }
