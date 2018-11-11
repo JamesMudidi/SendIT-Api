@@ -1,5 +1,21 @@
-from api import create_app
+from flask import Flask
+from api.config import config
+from api.config.routes import Routes
 
-app = create_app('development')
+class Loader:
+    @staticmethod
+    def create_app(env_name):
+
+        #app initiliazation
+        app = Flask(__name__)
+        app.config.from_object(config.APP_CONFIG[env_name])
+
+        #Directing to Routes
+        Routes.fetch_routes(app)
+
+        return app
+
+APP = Loader.create_app('development')
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    APP.run(port=5000)
