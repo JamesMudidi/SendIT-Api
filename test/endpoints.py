@@ -7,8 +7,6 @@ from test import tests
 @pytest.fixture(scope='module')
 def client():
     app = __init__('Testing')
-    #Create a test client
-    test_client = app.client()
 
 #Accepted data test
 def test_post_parcel_orders_endpoint(client):
