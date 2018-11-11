@@ -16,7 +16,7 @@ class TestCancelOrder(TestCase):
             'pickup': 'kampala',
             'destination': 'kireka',
             'description': 'fragile',
-            'weight': 50,
+            'weight': 10,
             'product': 'parcel',
         })
         CreateOrder().create_order({
@@ -24,7 +24,7 @@ class TestCancelOrder(TestCase):
             'pickup': 'kampala',
             'destination': 'kololo',
             'description': 'fragile',
-            'weight': 10,
+            'weight': 20,
             'product': 'parcel',
         })
         CreateOrder().create_order({
@@ -32,7 +32,7 @@ class TestCancelOrder(TestCase):
             'pickup': 'kamwokya',
             'destination': 'mengo',
             'description': 'fragile',
-            'weight': 1,
+            'weight': 30,
             'product': 'parcel',
         })
 
