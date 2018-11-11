@@ -35,7 +35,7 @@ class TestNoCancelOrder(TestCase):
             'product': 'crate',
         })
 
-        req = CreateOrder().client().put('/api/v1/parcels/10/cancel/')
+        req = CreateOrder().client().put('/api/v1/parcels/1/cancel/')
         resp = json.loads(req.data.decode())
         self.assertEqual(resp['success'], False)
         self.assertEqual(resp['error']['message'], 'order not found')
