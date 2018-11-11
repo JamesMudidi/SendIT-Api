@@ -39,5 +39,5 @@ class TestCancelOrder(TestCase):
         req = CreateOrder().client().put('/api/v1/parcels/1/cancel/')
         resp = json.loads(req.data.decode())
         self.assertEqual(resp['success'], True)
-        self.assertEqual(resp['data']['status'], 'Order cancelled')
+        self.assertEqual(resp['data']['status'], 'cancelled')
         self.assertEqual(req.status_code, 200)
