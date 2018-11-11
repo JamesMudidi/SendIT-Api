@@ -7,9 +7,8 @@ from test import tests
 @pytest.fixture(scope='module')
 def client():
     app = __init__('Testing')
-    
-
-    
+    #Create a test client
+    test_client = app.client()
     #Set the app client for testing
     cxt = app.app_context()
     cxt.push()
