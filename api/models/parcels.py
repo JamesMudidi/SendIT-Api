@@ -1,4 +1,4 @@
-from Api.utilities import serial_generator
+from api.utilities import serial_generator
 
 parcel_orders = []
 
