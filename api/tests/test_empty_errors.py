@@ -22,4 +22,4 @@ class TestEmptyErrors(TestCase):
         self.assertEqual(resp['success'], False)
         self.assertEqual(resp['error']['message'], 'No blank spaces allowed')
         self.assertEqual(post.content_type, 'application/json')
-        self.assertEqual(req.status_code, 404
+        self.assertEqual(req.status_code, 404)
