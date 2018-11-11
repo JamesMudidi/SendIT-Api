@@ -17,6 +17,6 @@ class TestStringErrors(TestCase):
 
         resp = json.loads(post.data.decode())
         self.assertEqual(resp['success'], False)
-        self.assertEqual(resp['error']['message'], 'Pickup, Destination, Description and Product should be strings')
+        self.assertEqual(resp['error']['message'], 'Pickup, Destination, Description and Product should be Strings')
         self.assertEqual(post.content_type, 'application/json')
         self.assertEqual(post.status_code, 400)
