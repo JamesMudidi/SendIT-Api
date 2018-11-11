@@ -5,6 +5,8 @@ python:
 
 install:
   - pip install -r requirements.txt
+  - pip install pytest-cov
+  - pip install coveralls
 
 script:
   - py.test --cov-config .coveragerc --cov=Api
