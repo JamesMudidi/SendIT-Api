@@ -1,6 +1,6 @@
 import pytest
 import json
-from api import create_app
+from api import __init__.py
 from tests import test
 
 
