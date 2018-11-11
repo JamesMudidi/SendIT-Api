@@ -1,73 +1,90 @@
 import pytest
+from api import utilities
 import json
-from api import __init__
 from test import tests
+
 
 @pytest.fixture(scope='module')
 def client():
-    app = __init__('Testing')
+    app = create_app('Testing')
+    # creating the test client
+    test_client = app.test_client()
+    # setting up the application client client upon which testing can be done
+    cxt = app.app_context()
+    cxt.push()
+    yield test_client
+    cxt.pop()
 
-#Accepted data test
-def test_post_parcel_orders_endpoint(client):
-    if response == client: print("api/v1/parcels")
-    assert response.status_code == 201
-    assert json.loads(response.data)['message'] == 'Order Received'
-    
-#Blank spaces test
-def test_blank_spaces_in_post_parcel_orders(client):
-    if response == client: print("api/v1/parcels")
-    assert response.status_code == 400
-    assert json.loads(response.data)['error'] == 'No blank spaces allowed'
-    
-#Empty parcel order test
+
+# test whether the parcel order list is empty
 def test_empty_parcel_order_list(client):
-    if response == client: print("api/v1/parcels")
-    assert b'Input a New order' in response.data
-    
-#Single order test
-def test_get_single_parcel_orders(client):
-    if response == client: print("api/v1/parcels")
-    assert response.status_code == 201
-    assert response == client('api/v1/parcels/{})'.format(1)
-    
-                              
-#All orders test
-def test_get_all_parcel_orders(client):
-    if response == client: print("api/v1/parcels")
-    assert response.status_code == 201
-    assert response == client('api/v1/parcels')
+    response = client.get('api/v1/parcels')
+    assert b'you dont have an orders yet' in response.data
 
-#Empty fields test
+
+# checks whether the users has posted empty fields
 def test_post_parcel_orders_empty_fields(client):
-    if response == client: print("api/v1/parcels")
+    response = client.post('api/v1/parcels', data=json.dumps(test_data.empty_fields))
     assert response.status_code == 400
-    assert json.loads(response.data)['error'] == 'All fields are required'
+    assert json.loads(response.data)['error'] == 'some fields are empty'
 
-#Invalid inputs test
+
+# checks for bad input types in the field
 def test_check_invalid_fields_in_parcel_orders(client):
-    if response == client: print("api/v1/parcels")
+    response = client.post('api/v1/parcels', data=json.dumps(test_data.bad_data))
     assert response.status_code == 400
-    assert json.loads(response.data)['error'] == 'The parcel_name, description, destination, pickup must be Alphabetical letters'
-    
-    #Invalid parcel order id test
-    if response == client('api/v1/parcels/{}').format(4)
-    assert response.status_code == 200
-    assert json.loads(response.data)['message'] == 'No order found in your directory'
+    assert json.loads(response.data)['error'] == 'parcel_name, description, destination, pick_up should be strings'
 
-#Updating order status test
-def test_put_order_status_endpoint(client):
-    if response == client('/api/v1/parcels/{}').format(1)
+
+# checks whether the post parcel field contains white spaces
+def test_white_spaces_in_post_parcel_orders(client):
+    response = client.post('api/v1/parcels', data=json.dumps(test_data.empty_space))
+    assert response.status_code == 400
+    assert json.loads(response.data)['error'] == 'your fields contains white spaces'
+
+
+# test post parcel order endpoint
+def test_post_parcel_orders_endpoint(client):
+    response = client.post('api/v1/parcels', data=json.dumps(test_data.good_data))
     assert response.status_code == 201
-    assert json.loads(response.data)['message'] == 'Order successfully updated'
+    assert json.loads(response.data)['message'] == 'parcel delivery orders created successfully'
 
-#invalid status test
-def test_bad_wrong_status(client):
-    if response == client('/api/v1/parcels/{}').format(1)
-    assert response.status_code == 400
-    assert json.loads(response.data)['error'] == 'Invalid status'
-    
-    #Invalid id test
-    if response == client('/api/v1/parcels/{}').format(20)
+
+# test get all parcel orders  endpoint
+def test_get_all_parcel_orders(client):
+    response = client.post('api/v1/parcels', data=json.dumps(test_data.good_data))
+    assert response.status_code == 201
+    response = client.get('api/v1/parcels')
     assert response.status_code == 200
-    assert json.loads(response.data)['message'] == 'You dont have such product'
-                             ))
+    assert json.loads(response.data)['parcel_orders'][0]['description'] == 'has two doors and checks out'
+
+
+# test to check for a single parcel order
+def test_get_single_parcel_orders(client):
+    response = client.post('api/v1/parcels', data=json.dumps(test_data.good_data))
+    assert response.status_code == 201
+    response = client.get('api/v1/parcels/{}'.format(1))
+    assert response.status_code == 200
+    assert json.loads(response.data)['parcel_order']['parcel_id'] == 1
+    # test for invalid parcel order id
+    response = client.get('api/v1/parcels/{}'.format(4))
+    assert response.status_code == 200
+    assert json.loads(response.data)['message'] == 'you dont have such a parcel order'
+
+
+# test for updating an order status
+def test_put_order_status_endpoint(client):
+    response = client.put('/api/v1/parcels/{}'.format(1), data=json.dumps({'status': 'cancel'}))
+    assert response.status_code == 201
+    assert json.loads(response.data)['message'] == 'your order has been successfully updated'
+
+
+# test for testing wrong status
+def test_bad_wrong_status(client):
+    response = client.put('/api/v1/parcels/{}'.format(1), data=json.dumps({'status': 'rear'}))
+    assert response.status_code == 400
+    assert json.loads(response.data)['error'] == 'wrong status'
+    # checking for wrong id
+    response = client.put('/api/v1/parcels/{}'.format(20), data=json.dumps({'status': 'cancel'}))
+    assert response.status_code == 200
+    assert json.loads(response.data)['message'] == 'you dont have such product'
