@@ -6,7 +6,7 @@ install:
   - pip install -r requirements.txt
 
 script:
-- make pytest
+- make py.test
 - coverage
 - coveralls
 - coverage report
