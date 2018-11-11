@@ -9,11 +9,6 @@ def client():
     app = __init__('Testing')
     #Create a test client
     test_client = app.client()
-    #Set the app client for testing
-    cxt = app.app_context()
-    cxt.push()
-    yield test_client
-    cxt.pop()
 
 #Accepted data test
 def test_post_parcel_orders_endpoint(client):
