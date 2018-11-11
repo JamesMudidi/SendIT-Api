@@ -7,7 +7,7 @@ install:
 
 script:
 - py.test --cov=.
-- coverage run
+- coverage
 - coveralls
 - coverage report
   
