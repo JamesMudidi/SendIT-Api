@@ -17,6 +17,6 @@ class TestIntegerErrors(TestCase):
 
         resp = json.loads(post.data.decode())
         self.assertEqual(resp['success'], False)
-        self.assertEqual(resp['error']['message'], 'User_id and Weight should be integers')
+        self.assertEqual(resp['error']['message'], 'User_id and Weight must be integers')
         self.assertEqual(post.content_type, 'application/json')
         self.assertEqual(post.status_code, 400)
