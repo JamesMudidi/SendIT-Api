@@ -1,7 +1,7 @@
 from flask import request, jsonify
 from ..api_v1 import api_v1
 from ..models.parcels import ParcelOrders
-from Api.utilities import checks_blank_fields, check_field_types, removes_blank_spaces
+from api.utilities import checks_blank_fields, check_field_types, removes_blank_spaces
 
 @api_v1.route('/parcels', methods=['POST'])
 def post_parcels():
