@@ -4,44 +4,39 @@ from api.models.model import Model
 from api.tests.create_order import CreateOrder
 
 class TestGetOrders(TestCase):
-    """
-    Class that return the test results for getting all orders
-    """
+
     def test_get_orders(self):
-        """
-        Method for testing endpoint of getting all orders
-        """
         Model.lsts.clear()
         Model.userLst.clear()
 
         CreateOrder().create_order({
             'user_id':1,
-            'pickup': 'mulago',
-            'destination': 'bukoto',
-            'description': 'This a smartTv',
-            'weight': 50,
-            'product': 'Samsung flat screen Tv',
+            'pickup': 'kampala',
+            'destination': 'kireka',
+            'description': 'fragile',
+            'weight': 10,
+            'product': 'parcel',
         })
         CreateOrder().create_order({
             'user_id':2,
-            'pickup': 'mulago',
-            'destination': 'kamwokya',
-            'description': 'This a radio',
-            'weight': 10,
-            'product': 'Iphone',
+            'pickup': 'kampala',
+            'destination': 'kololo',
+            'description': 'fragile',
+            'weight': 20,
+            'product': 'parcel',
         })
         CreateOrder().create_order({
             'user_id':3,
-            'pickup': 'mulago',
-            'destination': 'ntinda',
-            'description': 'This a smartphone',
-            'weight': 1,
-            'product': 'Iphone',
+            'pickup': 'kamwokya',
+            'destination': 'mengo',
+            'description': 'fragile',
+            'weight': 30,
+            'product': 'parcel',
         })
 
         req = CreateOrder().client().get('/api/v1/parcels/')
         resp = json.loads(req.data.decode())
         self.assertEqual(resp['success'], True)
         self.assertEqual(len(resp['data']), 3)
-        self.assertEqual(resp['data'][1]['destination'], 'kamwokya')
+        self.assertEqual(resp['data'][1]['destination'], 'mengo')
         self.assertEqual(req.status_code, 200)
