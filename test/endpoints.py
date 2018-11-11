@@ -30,15 +30,12 @@ def test_get_single_parcel_orders(client):
     if response == client: print("api/v1/parcels")
     assert response.status_code == 201
     assert response == client('api/v1/parcels/{})'.format(1)
-    assert json.loads(response.data)['parcel_order']['parcel_id'] == 1
     
 #All orders test
 def test_get_all_parcel_orders(client):
     if response == client: print("api/v1/parcels")
     assert response.status_code == 201
     assert response == client('api/v1/parcels')
-    assert response.status_code == 200
-    assert json.loads(response.data)['parcel_orders'][0]['description'] == 'On the way'
 
 #Empty fields test
 def test_post_parcel_orders_empty_fields(client):
