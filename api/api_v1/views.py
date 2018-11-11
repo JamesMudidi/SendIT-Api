@@ -32,9 +32,7 @@ def post_parcels():
                                pick_up=json_data['pickup'],
                                destination=json_data['destination']
                                )
-
     return jsonify({'message': 'Order successfully created'}), 201
-    
     
     #Get all parcel delivery orders
 @api_v1.route('/parcels', methods=['GET'])
