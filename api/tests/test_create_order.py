@@ -10,7 +10,7 @@ class TestCreateProduct(TestCase):
             'user_id':1,
             'pickup': 'kampala',
             'destination': 'kireka',
-            'description': 'fragile',
+            'description': 'light',
             'weight': 10,
             'product': 'parcel',
         }
