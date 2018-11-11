@@ -1,6 +1,6 @@
 import pytest
 import json
-from api import __init__.py
+from api import __init__
 from tests import test
 
 
