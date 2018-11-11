@@ -7,7 +7,6 @@ install:
 
 script:
   - coverage
-  - coverage3 report
   - coveralls 
   
 after_success:
