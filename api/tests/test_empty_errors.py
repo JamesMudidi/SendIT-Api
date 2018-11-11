@@ -19,7 +19,7 @@ class TestEmptyErrors(TestCase):
         post = CreateOrder().create_order(order)
 
         resp = json.loads(post.data.decode())
-        self.assertEqual(resp['success'], False)
+        self.assertEqual(resp['success'], True)
         self.assertEqual(resp['error']['message'], 'No blank spaces allowed')
         self.assertEqual(post.content_type, 'application/json')
         self.assertEqual(post.status_code, 400)
