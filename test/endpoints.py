@@ -6,7 +6,7 @@ from test import tests
 
 @pytest.fixture(scope='module')
 def client():
-    app = create_app('Testing')
+    app = __init__('Testing')
     
     #Create a test client
     test_client = app.test_client()
