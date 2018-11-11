@@ -38,5 +38,5 @@ class TestGetOrders(TestCase):
         resp = json.loads(req.data.decode())
         self.assertEqual(resp['success'], True)
         self.assertEqual(len(resp['data']), 3)
-        self.assertEqual(resp['data'][1]['destination'], 'mengo')
+        self.assertEqual(resp['data'][1]['destination'], 'kololo')
         self.assertEqual(req.status_code, 200)
