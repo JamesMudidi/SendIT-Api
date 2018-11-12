@@ -14,7 +14,7 @@ class Routes:
         #default route
         @app.route('/')
         def index():
-            return "<h1>Welcome to SendIT</h1> <p>We Help you Deliver and Track your Parcels</p>"
+            return "<h1 align="center">Welcome to SendIT</h1> <p align="center">We Help you Deliver and Track your Parcels</p>"
 
         #parcels endpoints
         app.add_url_rule(
