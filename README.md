@@ -16,6 +16,11 @@ SendIT is a courier service that helps users deliver parcels to different destin
 5. Users can see the details of a delivery order.
 6. Admin can change the status and present location of a parcel delivery order.
 
+<h2>Hosted on Heroku</h2>
+<p>The online api can be found here</p>
+<p><a href="https://sendit-api-heroku-v1.herokuapp.com/" rel="nofollow">Heroku Link</a></p>
+
+
 <h2>Installation:</h2>
 <p>First clone this repository</p>
 <pre><code>git clone https://github.com/JamesMudidi/SendIT-Api
