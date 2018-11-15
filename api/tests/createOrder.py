@@ -5,9 +5,7 @@ class createOrder:
    ### Create Order ###
 
     def __init__(self):
-        """
-        Initiating flask object
-        """
+        ### Initiating flask object ###
         self.app = APP
         self.client = self.app.test_client
 
