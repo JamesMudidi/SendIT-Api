@@ -7,6 +7,7 @@ SendIT is a courier service that helps users deliver parcels to different destin
 [![Maintainability](https://api.codeclimate.com/v1/badges/e3730e3e8c4957519b59/maintainability)](https://codeclimate.com/github/JamesMudidi/SendIT-Api/maintainability)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/d1350edaa64e4cc9ab23c0fb8928c30f)](https://www.codacy.com/app/JamesMudidi/SendIT-Api?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=JamesMudidi/SendIT-Api&amp;utm_campaign=Badge_Grade)
 [![Coverage Status](https://coveralls.io/repos/github/JamesMudidi/SendIT-Api/badge.svg?branch=Api)](https://coveralls.io/github/JamesMudidi/SendIT-Api?branch=Api)
+[![Requirements Status](https://requires.io/github/requires/monitoring/requirements.svg?branch=master)](https://requires.io/github/requires/monitoring/requirements/?branch=master)
 
 <h2>Features:</h2>
 <p>1. Users can create an account and log in.</p>
