@@ -5,7 +5,7 @@ from api.tests.createOrder import createOrder
 
 class cancelOrder(TestCase):
     ### Canceling orders test results ###
-    def cancelOrder(self):
+    def cancel_order(self):
         Model.lsts.clear()
         Model.userLst.clear()
 
