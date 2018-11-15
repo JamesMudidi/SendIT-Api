@@ -2,9 +2,7 @@ from flask import json
 from run import APP
 
 class CreateOrder:
-    """
-    Create Order
-    """
+   ### Create Order ###
 
     def __init__(self):
         """
@@ -13,10 +11,8 @@ class CreateOrder:
         self.app = APP
         self.client = self.app.test_client
 
-    def create_order(self, data):
-        """
-        Create order
-        """
+    def createOrder(self, data):
+        ### Create order ###
         post = self.client().post(
             '/parcels/',
             data=json.dumps(dict(
