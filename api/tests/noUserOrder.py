@@ -1,15 +1,15 @@
 from unittest import TestCase
-from api.tests.create_order import CreateOrder
+from api.tests.createOorder import CreateOrder
 from flask import json
 from api.models.model import Model
 
-class TestNoUserOrder(TestCase):
+class noUserOrder(TestCase):
 
-    def test_no_user_order(self):
+    def noUserOrder(self):
         Model.lsts.clear()
         Model.userLst.clear()
 
-        CreateOrder().create_order({
+        CreateOrder().createOrder({
            'user_id':1,
             'pickup': 'kampala',
             'destination': 'kireka',
@@ -17,7 +17,7 @@ class TestNoUserOrder(TestCase):
             'weight': 10,
             'product': 'parcel',
         })
-        CreateOrder().create_order({
+        CreateOrder().createOrder({
             'user_id':2,
             'pickup': 'kampala',
             'destination': 'kololo',
@@ -25,7 +25,7 @@ class TestNoUserOrder(TestCase):
             'weight': 20,
             'product': 'box',
         })
-        CreateOrder().create_order({
+        CreateOrder().createOrder({
            'user_id':3,
             'pickup': 'kamwokya',
             'destination': 'mengo',
@@ -34,7 +34,7 @@ class TestNoUserOrder(TestCase):
             'product': 'crate',
         })
 
-        req = CreateOrder().client().get('/api/v1/users/10/parcels/')
+        req = CreateOrder().client().get('/users/1/parcels/')
         resp = json.loads(req.data.decode())
         self.assertEqual(resp['success'], False)
         self.assertEqual(resp['error']['message'], 'Order not found')
