@@ -36,7 +36,7 @@ class cancelOrder(TestCase):
             'product': 'crate',
         })
 
-        req = createOrder().client().put('/parcels/1/cancel/')
+        req = create_order().client().put('/parcels/1/cancel/')
         resp = json.loads(req.data.decode())
         self.assertEqual(resp['success'], True)
         self.assertEqual(resp['data']['status'], 'cancelled')
