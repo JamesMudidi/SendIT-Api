@@ -7,3 +7,11 @@ Badges:
 [![Maintainability](https://api.codeclimate.com/v1/badges/e3730e3e8c4957519b59/maintainability)](https://codeclimate.com/github/JamesMudidi/SendIT-Api/maintainability)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/d1350edaa64e4cc9ab23c0fb8928c30f)](https://www.codacy.com/app/JamesMudidi/SendIT-Api?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=JamesMudidi/SendIT-Api&amp;utm_campaign=Badge_Grade)
 [![Coverage Status](https://coveralls.io/repos/github/JamesMudidi/SendIT-Api/badge.svg?branch=Api)](https://coveralls.io/github/JamesMudidi/SendIT-Api?branch=Api)
+
+Features
+Users can create an account and log in.
+Users can create a parcel delivery order.
+Users can change the destination of a parcel delivery order.
+Users can cancel a parcel delivery order.
+Users can see the details of a delivery order.
+Admin can change the status and present location of a parcel delivery order.
