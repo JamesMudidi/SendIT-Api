@@ -9,7 +9,7 @@ class CancelOrder(TestCase):
         Model.lsts.clear()
         Model.userLst.clear()
 
-        CreateOrder().createOrder({
+        createOrder().createOrder({
             'user_id':1,
             'pickup': 'kampala',
             'destination': 'kireka',
@@ -17,7 +17,7 @@ class CancelOrder(TestCase):
             'weight': 10,
             'product': 'parcel',
         })
-        CreateOrder().createOrder({
+        createOrder().createOrder({
             'user_id':2,
             'pickup': 'kampala',
             'destination': 'kololo',
@@ -25,7 +25,7 @@ class CancelOrder(TestCase):
             'weight': 20,
             'product': 'box',
         })
-        CreateOrder().createOrder({
+        createOrder().createOrder({
             'user_id':3,
             'pickup': 'kamwokya',
             'destination': 'mengo',
@@ -34,7 +34,7 @@ class CancelOrder(TestCase):
             'product': 'crate',
         })
 
-        req = CreateOrder().client().put('/parcels/1/cancel/')
+        req = createOrder().client().put('/parcels/1/cancel/')
         resp = json.loads(req.data.decode())
         self.assertEqual(resp['success'], True)
         self.assertEqual(resp['data']['status'], 'cancelled')
