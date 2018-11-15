@@ -1,6 +1,6 @@
 from flask import Flask
 from api.config import config
-from api.config.routes import Routes
+from api.config.routes import routes
 
 class Loader:
     @staticmethod
@@ -11,7 +11,7 @@ class Loader:
         app.config.from_object(config.APP_CONFIG[env_name])
 
         #Directing to Routes
-        Routes.fetch_routes(app)
+        routes.fetch_routes(app)
 
         return app
 
