@@ -41,7 +41,7 @@ source/venv/bin/activate
 <pre><code>pytest
 </code></pre>
 
-<p>The Api endpoints can be used with<a href="https://www.getpostman.com/apps" rel="nofollow">Postman</a></p>
+<p>The Api endpoints can be used with <a href="https://www.getpostman.com/apps" rel="nofollow">Postman</a></p>
 
 <h2>Contributors</h2>
 <p><a href="https://github.com/JamesMudidi" rel="nofollow">James Mudidi</a></p>
