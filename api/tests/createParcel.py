@@ -18,6 +18,6 @@ class createParcel(TestCase):
 
         resp = json.loads(post.data.decode())
         self.assertEqual(resp['success'], True)
-        self.assertEqual(resp['data']['product'], 'parcel')
+        self.assertEqual(resp['data']['product'], 'parcel/')
         self.assertEqual(post.content_type, 'application/json')
         self.assertEqual(post.status_code, 201)
