@@ -1,16 +1,12 @@
 from flask import jsonify
 
 class Model:
-    """
-    Add data
-    """
+    ### Add data ###
     lsts = []
     userLst = []
 
-    def get_order(self, order_id=None):
-        """
-        Get data
-        """
+    def getOrder(self, order_id=None):
+        ### Get data ###
         if order_id is None:
             return jsonify({"success":True, "data":Model.lsts}), 200
         for order in Model.lsts:
@@ -18,10 +14,8 @@ class Model:
                 return jsonify({"success":True, "data":order}), 200
         return jsonify({"success":False, "error":{"message": "Order not found"}}), 404
 
-    def get_order_user(self, user_id):
-        """
-        Get data posted by a specific user
-        """
+    def userOrder(self, user_id):
+        ### Get data posted by a specific user ###
         for order in Model.lsts:
             if order.get('user_id') == user_id:
                 Model.userLst.append(order)
@@ -33,19 +27,15 @@ class Model:
         return jsonify({"success":False, "error":{"message": "Order not found"}}), 404
 
 
-    def cancel_order(self, order_id):
-        """
-        Cancel order
-        """
+    def cancelOrder(self, order_id):
+        ### Cancel order ###
         for order in Model.lsts:
             if order.get('order_id') == order_id:
                 order['status'] = 'cancelled'
                 return jsonify({"success":True, "data":order}), 200
         return jsonify({"success":False, "error":{"message": "Order canceled"}}), 404
 
-    def create_order(self, order):
-        """
-        Add an order
-        """
+    def createOrder(self, order):
+        ### Add an order ###
         Model.lsts.append(order)
         return jsonify({"success":True, "data":order}), 201
