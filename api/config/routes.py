@@ -14,11 +14,11 @@ class Routes:
         #default route
         @app.route('/')
         def index():
-            return "<h1>Welcome to SendIT</h1>"
+            return "<h1>Welcome to SendIT</h1><p>You Request | We Deliver</p>"
 
         #parcels endpoints
         app.add_url_rule(
-            '/api/v1/parcels/',
+            '/parcels/',
             view_func=Controller.as_view('createParcel'),
             methods=['POST'],
             strict_slashes=False
