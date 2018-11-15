@@ -1,5 +1,5 @@
 from unittest import TestCase
-from api.tests.createOrder import createOrder
+from api.tests.test_createOrder import createOrder
 from flask import json
 from api.models.model import Model
 
