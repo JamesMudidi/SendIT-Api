@@ -1,6 +1,6 @@
 from unittest import TestCase
 from flask import json
-from api.tests.createOrder import createOrder
+from api.tests.test_createOrder import createOrder
 
 class integer(TestCase):
 
