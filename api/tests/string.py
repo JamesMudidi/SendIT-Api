@@ -1,10 +1,10 @@
 from unittest import TestCase
 from flask import json
-from api.tests.create_order import CreateOrder
+from api.tests.createOrder import CreateOrder
 
-class TestStringErrors(TestCase):
+class string(TestCase):
 
-    def test_string_errors(self):
+    def string(self):
         order = {
             'user_id':1,
             'pickup': 100,
@@ -13,7 +13,7 @@ class TestStringErrors(TestCase):
             'weight': 10,
             'product': 'parcel',
         }
-        post = CreateOrder().create_order(order)
+        post = CreateOrder().createOrder(order)
 
         resp = json.loads(post.data.decode())
         self.assertEqual(resp['success'], False)
