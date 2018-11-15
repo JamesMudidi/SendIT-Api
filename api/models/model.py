@@ -21,7 +21,6 @@ class Model:
                 Model.userLst.append(order)
             else:
                 Model.userLst.clear()
-
         if len(Model.userLst) > 0:
             return jsonify({"success":True, "data":Model.userLst}), 200
         return jsonify({"success":False, "error":{"message": "Order not found"}}), 404
