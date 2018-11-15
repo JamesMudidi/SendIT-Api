@@ -1,5 +1,5 @@
 from flask import Flask
-from api.config import config
+from api.config.config import config
 from api.config.routes import Routes
 
 class Loader:
