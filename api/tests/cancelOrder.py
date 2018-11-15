@@ -3,7 +3,7 @@ from flask import json
 from api.models.model import Model
 from api.tests.createOrder import createOrder
 
-class CancelOrder(TestCase):
+class cancelOrder(TestCase):
     ### Canceling orders test results ###
     def cancelOrder(self):
         Model.lsts.clear()
