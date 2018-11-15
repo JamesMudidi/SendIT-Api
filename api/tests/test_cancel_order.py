@@ -1,7 +1,7 @@
 from unittest import TestCase
 from flask import json
 from api.models.model import Model
-from api.tests.createOrder import createOrder
+from api.tests.test_createOrder import createOrder
 
 class cancelOrder(TestCase):
     ### Canceling orders test results ###
