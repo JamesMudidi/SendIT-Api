@@ -1,5 +1,5 @@
 from unittest import TestCase
-from api.tests.createOrder import CreateOrder
+from api.tests.createOrder import createOrder
 from flask import json
 from api.models.model import Model
 
@@ -10,7 +10,7 @@ class singleOrder(TestCase):
         Model.lsts.clear()
         Model.userLst.clear()
         
-        CreateOrder().createOrder({
+        createOrder().createOrder({
             'user_id':1,
             'pickup': 'kampala',
             'destination': 'kireka',
@@ -18,7 +18,8 @@ class singleOrder(TestCase):
             'weight': 10,
             'product': 'parcel',
         })
-        CreateOrder().createOrder({
+        
+        createOrder().createOrder({
             'user_id':2,
             'pickup': 'kampala',
             'destination': 'kololo',
@@ -26,7 +27,8 @@ class singleOrder(TestCase):
             'weight': 20,
             'product': 'box',
         })
-        CreateOrder().createOrder({
+        
+        createOrder().createOrder({
             'user_id':3,
             'pickup': 'kamwokya',
             'destination': 'mengo',
@@ -35,7 +37,7 @@ class singleOrder(TestCase):
             'product': 'crate',
         })
 
-        req = CreateOrder().client().get('/parcels/1')
+        req = createOrder().client().get('/parcels/1')
         resp = json.loads(req.data.decode())
         self.assertEqual(resp['success'], True)
         self.assertEqual(resp['data']['destination'], 'kireka')
