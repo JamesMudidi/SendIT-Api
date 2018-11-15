@@ -1,6 +1,6 @@
 from unittest import TestCase
 from flask import json
-from api.tests.createOrder import CreateOrder
+from api.tests.createOrder import createOrder
 
 class string(TestCase):
 
@@ -13,7 +13,7 @@ class string(TestCase):
             'weight': 10,
             'product': 'parcel',
         }
-        post = CreateOrder().createOrder(order)
+        post = createOrder().createOrder(order)
 
         resp = json.loads(post.data.decode())
         self.assertEqual(resp['success'], False)
