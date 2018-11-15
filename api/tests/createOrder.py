@@ -9,7 +9,7 @@ class createOrder:
         self.app = APP
         self.client = self.app.test_client
 
-    def createOrder(self, data):
+    def create_order(self, data):
         ### Create order ###
         post = self.client().post(
             '/parcels/',
