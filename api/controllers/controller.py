@@ -9,18 +9,6 @@ class Controller(MethodView):
         ### Initialise model object ###
         self.parcel = Model()
 
-    def get(self, parcel_id=None, user_id=None):
-        ### Retrieve data ###
-        if parcel_id is None and user_id is None:
-            return self.parcel.getOrder()
-        if user_id is None:
-            return self.parcel.getOrder(parcel_id)
-        return self.parcel.userOrder(user_id)
-
-    def put(self, parcel_id):
-        ### Update data in ###
-        return self.parcel.cancelOrder(parcel_id)
-
     def post(self):
         ### Add data ###
         post_data = request.get_json()
@@ -39,3 +27,15 @@ class Controller(MethodView):
             }
             return self.parcel.createOrder(data)
         return value
+
+    def get(self, parcel_id=None, user_id=None):
+        ### Retrieve data ###
+        if parcel_id is None and user_id is None:
+            return self.parcel.getOrder()
+        if user_id is None:
+            return self.parcel.getOrder(parcel_id)
+        return self.parcel.userOrder(user_id)
+
+    def put(self, parcel_id):
+        ### Update data in ###
+        return self.parcel.cancelOrder(parcel_id)
