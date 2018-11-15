@@ -1,27 +1,18 @@
-"""
-Module for creating an order
-"""
 from flask import json
 from run import APP
 
-class CreateOrder:
-    """
-    Class for creating an order
-    """
+class createOrder:
+    ### Class for creating an order ###
 
     def __init__(self):
-        """
-        class constructor for initiating flask object
-        """
+        ### class constructor for initiating flask object ###
         self.app = APP
         self.client = self.app.test_client
 
     def create_order(self, data):
-        """
-        Method for creating order
-        """
+        ### Method for creating order ###
         post = self.client().post(
-            '/api/v1/parcels/',
+            '/parcels/',
             data=json.dumps(dict(
                 user_id=data['user_id'],
                 pickup=data['pickup'],
