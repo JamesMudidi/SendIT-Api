@@ -15,31 +15,31 @@ class routes:
         ### parcels endpoints ###
         app.add_url_rule(
             '/parcels/create/',
-            view_func=Controller.as_view('createParcel'),
+            view_func=Controller.as_view('createOrder'),
             methods=['POST'],
             strict_slashes=False
         )
         app.add_url_rule(
             '/parcels/get/',
-            view_func=Controller.as_view('getParcels'),
+            view_func=Controller.as_view('createParcel'),
             methods=['GET'],
             strict_slashes=False
         )
         app.add_url_rule(
             '/parcels/get/<int:parcel_id>/',
-            view_func=Controller.as_view('getSingleParcel'),
+            view_func=Controller.as_view('singleOrder'),
             methods=['GET'],
             strict_slashes=False
         )
         app.add_url_rule(
             '/users/parcels/<int:user_id>/',
-            view_func=Controller.as_view('getParcelByUser'),
+            view_func=Controller.as_view('UserOrder'),
             methods=['GET'],
             strict_slashes=False
         )
         app.add_url_rule(
             '/parcels/cancel/<int:parcel_id>/',
-            view_func=Controller.as_view('cancelParcel'),
+            view_func=Controller.as_view('cancelOrder'),
             methods=['PUT'],
             strict_slashes=False
         )
