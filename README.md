@@ -8,10 +8,22 @@ SendIT is a courier service that helps users deliver parcels to different destin
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/d1350edaa64e4cc9ab23c0fb8928c30f)](https://www.codacy.com/app/JamesMudidi/SendIT-Api?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=JamesMudidi/SendIT-Api&amp;utm_campaign=Badge_Grade)
 [![Coverage Status](https://coveralls.io/repos/github/JamesMudidi/SendIT-Api/badge.svg?branch=Api)](https://coveralls.io/github/JamesMudidi/SendIT-Api?branch=Api)
 
-*Features:*
+<h2>Features:</h2>
 1. Users can create an account and log in.
 2. Users can create a parcel delivery order.
 3. Users can change the destination of a parcel delivery order.
 4. Users can cancel a parcel delivery order.
 5. Users can see the details of a delivery order.
 6. Admin can change the status and present location of a parcel delivery order.
+
+<p>First clone this repository</p>
+<pre><code>git clone https://github.com/JamesMudidi/SendIT-Api
+cd SendIT-Challenge-2
+</code></pre>
+<p>Then create a virtual environment and start it</p>
+<pre><code>virtualenv venv
+source/venv/bin/activate
+</code></pre>
+<p>Then install all the necessary dependencies</p>
+<pre><code>pip install -r requirements.txt
+</code></pre>
