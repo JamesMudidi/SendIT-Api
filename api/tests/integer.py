@@ -1,8 +1,8 @@
 from unittest import TestCase
 from flask import json
-from api.tests.create_order import CreateOrder
+from api.tests.createOrder import createOrder
 
-class Integer(TestCase):
+class integer(TestCase):
 
     def integer(self):
         order = {
@@ -13,7 +13,7 @@ class Integer(TestCase):
             'weight': 10,
             'product': 'parcel',
         }
-        post = CreateOrder().createOrder(order)
+        post = createOrder().createOrder(order)
         resp = json.loads(post.data.decode())
         self.assertEqual(resp['success'], False)
         self.assertEqual(resp['error']['message'], 'User_id and Weight must be integers')
