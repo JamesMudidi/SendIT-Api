@@ -20,7 +20,6 @@ SendIT is a courier service that helps users deliver parcels to different destin
 <p>The online api can be found here</p>
 <p><a href="https://sendit-api-heroku-v1.herokuapp.com/" rel="nofollow">Heroku Link</a></p>
 
-
 <h2>Installation:</h2>
 <p>First clone this repository</p>
 <pre><code>git clone https://github.com/JamesMudidi/SendIT-Api
@@ -33,3 +32,16 @@ source/venv/bin/activate
 <p>Then install all the necessary dependencies</p>
 <pre><code>pip install -r requirements.txt
 </code></pre>
+
+<h2>Run The App</h2>
+<p>Using the Terminal / Console type</p>
+<pre><code>python run.py
+</code></pre>
+<p>To test he app run the following commmand in the Terminal / Console</p>
+<pre><code>pytest
+</code></pre>
+
+<p>The Api endpoints can be used with<a href="https://www.getpostman.com/apps" rel="nofollow">Postman</a></p>
+
+<h2>Contributors</h2>
+<p><a href="https://github.com/JamesMudidi" rel="nofollow">James Mudidi</a></p>
