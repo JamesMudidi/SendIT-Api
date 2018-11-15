@@ -2,7 +2,7 @@ from unittest import TestCase
 from flask import json
 from api.createOrder import createOrder
 
-class TestCreateParcel(TestCase):
+class createParcel(TestCase):
 
     def createParcel(self):
 
