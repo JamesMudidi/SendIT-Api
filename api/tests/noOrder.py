@@ -35,7 +35,7 @@ class noOrder(TestCase):
             'product': 'crate',
         })
 
-        req = createOrder().client().get('parcels/100')
+        req = createOrder().client().get('parcels/noorder')
         resp = json.loads(req.data.decode())
         self.assertEqual(resp['success'], False)
         self.assertEqual(resp['error']['message'], 'Order not found')
