@@ -11,7 +11,7 @@ omit =
     *__init__.py
     *routes.py
     *config.py
-    *data_validation.py
+    *validation.py
     *controller.py
     *model.py
-    *create_order.py
+    *createOrder.py
