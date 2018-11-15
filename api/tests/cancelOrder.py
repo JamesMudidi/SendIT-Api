@@ -1,17 +1,15 @@
 from unittest import TestCase
 from flask import json
 from api.models.model import Model
-from api.tests.create_order import CreateOrder
+from api.tests.createOrder import CreateOrder
 
-class TestCancelOrder(TestCase):
-    """
-    Canceling orders test results
-    """
-    def test_cancel_order(self):
+class CancelOrder(TestCase):
+    ### Canceling orders test results ###
+    def cancelOrder(self):
         Model.lsts.clear()
         Model.userLst.clear()
 
-        CreateOrder().create_order({
+        CreateOrder().createOrder({
             'user_id':1,
             'pickup': 'kampala',
             'destination': 'kireka',
@@ -19,7 +17,7 @@ class TestCancelOrder(TestCase):
             'weight': 10,
             'product': 'parcel',
         })
-        CreateOrder().create_order({
+        CreateOrder().createOrder({
             'user_id':2,
             'pickup': 'kampala',
             'destination': 'kololo',
@@ -27,7 +25,7 @@ class TestCancelOrder(TestCase):
             'weight': 20,
             'product': 'box',
         })
-        CreateOrder().create_order({
+        CreateOrder().createOrder({
             'user_id':3,
             'pickup': 'kamwokya',
             'destination': 'mengo',
@@ -36,7 +34,7 @@ class TestCancelOrder(TestCase):
             'product': 'crate',
         })
 
-        req = CreateOrder().client().put('/api/v1/parcels/1/cancel/')
+        req = CreateOrder().client().put('/parcels/1/cancel/')
         resp = json.loads(req.data.decode())
         self.assertEqual(resp['success'], True)
         self.assertEqual(resp['data']['status'], 'cancelled')
