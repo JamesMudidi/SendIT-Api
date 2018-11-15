@@ -9,7 +9,7 @@ class cancelOrder(TestCase):
         Model.lsts.clear()
         Model.userLst.clear()
 
-        createOrder().createOrder({
+        createOrder().create_order({
             'user_id':1,
             'pickup': 'kampala',
             'destination': 'kireka',
@@ -18,7 +18,7 @@ class cancelOrder(TestCase):
             'product': 'parcel',
         })
         
-        createOrder().createOrder({
+        createOrder().create_order({
             'user_id':2,
             'pickup': 'kampala',
             'destination': 'kololo',
@@ -27,7 +27,7 @@ class cancelOrder(TestCase):
             'product': 'box',
         })
         
-        createOrder().createOrder({
+        createOrder().create_order({
             'user_id':3,
             'pickup': 'kamwokya',
             'destination': 'mengo',
