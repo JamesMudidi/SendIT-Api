@@ -17,6 +17,7 @@ class cancelOrder(TestCase):
             'weight': 10,
             'product': 'parcel',
         })
+        
         createOrder().createOrder({
             'user_id':2,
             'pickup': 'kampala',
@@ -25,6 +26,7 @@ class cancelOrder(TestCase):
             'weight': 20,
             'product': 'box',
         })
+        
         createOrder().createOrder({
             'user_id':3,
             'pickup': 'kamwokya',
