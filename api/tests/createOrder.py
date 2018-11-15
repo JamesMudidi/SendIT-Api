@@ -1,7 +1,7 @@
 from flask import json
 from run import APP
 
-class CreateOrder:
+class createOrder:
    ### Create Order ###
 
     def __init__(self):
