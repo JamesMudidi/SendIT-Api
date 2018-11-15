@@ -18,6 +18,7 @@ py==1.7.0
 pytest==4.0.0
 pytest-cov==2.6.0
 pytz==2018.7
+PyYAML==3.13
 requests==2.20.1
 six==1.11.0
 urllib3==1.24.1
