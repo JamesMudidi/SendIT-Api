@@ -9,12 +9,12 @@ SendIT is a courier service that helps users deliver parcels to different destin
 [![Coverage Status](https://coveralls.io/repos/github/JamesMudidi/SendIT-Api/badge.svg?branch=Api)](https://coveralls.io/github/JamesMudidi/SendIT-Api?branch=Api)
 
 <h2>Features:</h2>
-1. Users can create an account and log in.
-2. Users can create a parcel delivery order.
-3. Users can change the destination of a parcel delivery order.
-4. Users can cancel a parcel delivery order.
-5. Users can see the details of a delivery order.
-6. Admin can change the status and present location of a parcel delivery order.
+<p>1. Users can create an account and log in.</p>
+<p>2. Users can create a parcel delivery order.</p>
+<p>3. Users can change the destination of a parcel delivery order.</p>
+<p>4. Users can cancel a parcel delivery order.</p>
+<p>5. Users can see the details of a delivery order.</p>
+<p>6. Admin can change the status and present location of a parcel delivery order.</p>
 
 <h2>Hosted on Heroku</h2>
 <p>The online api can be found here</p>
