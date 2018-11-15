@@ -16,6 +16,7 @@ SendIT is a courier service that helps users deliver parcels to different destin
 5. Users can see the details of a delivery order.
 6. Admin can change the status and present location of a parcel delivery order.
 
+<h2>Installation:</h2>
 <p>First clone this repository</p>
 <pre><code>git clone https://github.com/JamesMudidi/SendIT-Api
 cd SendIT-Challenge-2
