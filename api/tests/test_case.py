@@ -33,7 +33,6 @@ class TestView(TestCase):
 
     def createOrder(self):
         ### Create order ##
-        """
         post = self.client().post(
             '/parcels',
             data=json.dumps(dict(
