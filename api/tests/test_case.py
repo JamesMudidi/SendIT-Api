@@ -28,8 +28,6 @@ class TestView(TestCase):
             content_type='application/json'
         )
 
-        self.token = login_res['token']
-
     def createOrder(self):
         ### Create order ##
         post = self.client().post(
