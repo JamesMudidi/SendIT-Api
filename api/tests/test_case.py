@@ -28,7 +28,7 @@ class TestView(TestCase):
             content_type='application/json'
         )
 
-    def createOrder(self):
+    def test_create_order(self):
         ### Create order ##
         post = self.client().post(
             '/parcels',
@@ -48,7 +48,7 @@ class TestView(TestCase):
         self.assertEqual(resp['success'], True)
         self.assertEqual(post.status_code, 201)
 
-    def integer (self):
+    def test_int_error(self):
         ### Integers ###
         post = self.client().post(
             '/parcels',
@@ -68,7 +68,7 @@ class TestView(TestCase):
         self.assertEqual(resp['error']['message'], 'Weight is an integer')
         self.assertEqual(post.status_code, 400)
 
-    def string (self):
+    def test_string_error(self):
         ### String errors ###
         post = self.client().post(
             '/parcels',
@@ -88,7 +88,7 @@ class TestView(TestCase):
         self.assertEqual(resp['error']['message'], 'Description, Destination, Pickup, and Product should be a strings')
         self.assertEqual(post.status_code, 400)
 
-    def blank (self):
+    def test_empty_error(self):
         ### Blank fields ###
         post = self.client().post(
             '/parcels',
@@ -108,7 +108,7 @@ class TestView(TestCase):
         self.assertEqual(resp['error']['message'], 'All fields are required')
         self.assertEqual(post.status_code, 400)
 
-    def missing (self):
+    def test_key_error(self):
         ### Missing fields ###
         post = self.client().post(
             '/parcels',
@@ -127,7 +127,7 @@ class TestView(TestCase):
         self.assertEqual(resp['error']['message'], 'Fields missing')
         self.assertEqual(post.status_code, 400)
 
-    def missingContent (self):
+    def test_content_error(self):
         ### Missing content ###
         post = self.client().post(
             '/parcels',
@@ -146,7 +146,7 @@ class TestView(TestCase):
         self.assertEqual(resp['error']['message'], 'Jason required')
         self.assertEqual(post.status_code, 400)
 
-    def getOrders(self):
+    def test_get_orders(self):
         ### Get orders ###
         post = self.client().get(
             '/parcels',
@@ -158,7 +158,7 @@ class TestView(TestCase):
         self.assertEqual(resp['success'], True)
         self.assertEqual(post.status_code, 200)
 
-    def singleOrder(self):
+    def test_single_order(self):
         ### single error ###
         post = self.client().get(
             '/parcels/1',
@@ -170,7 +170,7 @@ class TestView(TestCase):
         self.assertEqual(resp['success'], False)
         self.assertEqual(post.status_code, 404)
 
-    def userOrder(self):
+    def test_user_order(self):
         ### User order ###
         post = self.client().get(
             '/users/1/parcels',
@@ -182,7 +182,7 @@ class TestView(TestCase):
         self.assertEqual(resp['success'], False)
         self.assertEqual(post.status_code, 404)
 
-    def cancelOrder(self):
+    def test_cancel_order(self):
         ### cancel order ###
         post = self.client().put(
             '/parcels/1/cancel',
