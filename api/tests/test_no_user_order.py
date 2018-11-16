@@ -35,7 +35,6 @@ class TestNoUserOrder(TestCase):
         })
 
         req = CreateOrder().client().get('/api/v1/users/10/parcels/')
-        resp = json.loads(req.data.decode())
         self.assertEqual(resp['success'], False)
         self.assertEqual(resp['error']['message'], 'Order not found')
         self.assertEqual(req.status_code, 404)
