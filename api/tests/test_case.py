@@ -6,24 +6,24 @@ class TestView(TestCase):
 
     ### TestCase for TDD ###
     def setUp(self):
-        ### class constructor for initiating flask object ###
+        ### Flask object initiate ###
         self.app = APP
         self.client = self.app.test_client
         self.client().post(
-            '/api/v1/auth/signup',
+            '/auth/signup',
             data=json.dumps(dict(
-                username='bagzie',
-                email='bagenda@gmail.com',
-                password='bagenda'
+                username='james',
+                email='mudidi.jimmy@gmail.com',
+                password='test'
             )),
             content_type='application/json'
         )
 
         login = self.client().post(
-            '/api/v1/auth/login',
+            '/auth/login',
             data=json.dumps(dict(
-                username='bagzie',
-                password='bagenda'
+                username='james',
+                password='test'
             )),
             content_type='application/json'
         )
@@ -31,18 +31,17 @@ class TestView(TestCase):
         login_res = json.loads(login.data)
         self.token = login_res['token']
 
-    def test_create_order(self):
-        """
-        Method returns create order results
+    def createOrder(self):
+        ### Create order ##
         """
         post = self.client().post(
-            '/api/v1/parcels',
+            '/parcels',
             data=json.dumps(dict(
-                pickup='mulago',
-                destination='ntinda',
-                description='This is a smart phone',
-                weight=3,
-                product='iPhone',
+                pickup='Kampala',
+                destination='Kireka',
+                description='box',
+                weight=10,
+                product='crate',
             )),
             content_type='application/json',
             headers={'token_value': self.token}
@@ -54,17 +53,15 @@ class TestView(TestCase):
         self.assertEqual(post.status_code, 201)
 
     def test_string_error(self):
-        """
-        Method for checking string errors
-        """
+        ### Integers ###
         post = self.client().post(
-            '/api/v1/parcels',
-            data=json.dumps(dict(
-                pickup='mulago',
-                destination='ntinda',
-                description='This is a smart phone',
-                weight='',
-                product='iPhone',
+            '/parcels',
+           data=json.dumps(dict(
+                pickup='Kampala',
+                destination='Kireka',
+                description='box',
+                weight=10,
+                product='crate',
             )),
             content_type='application/json',
             headers={'token_value': self.token}
@@ -72,21 +69,19 @@ class TestView(TestCase):
 
         resp = json.loads(post.data)
         self.assertEqual(resp['success'], False)
-        self.assertEqual(resp['error']['message'], 'weight should be an integer and above 0')
+        self.assertEqual(resp['error']['message'], 'Weight is an integer')
         self.assertEqual(post.status_code, 400)
 
     def test_int_error(self):
-        """
-        Method for checking int errors
-        """
+        ### String errors ###
         post = self.client().post(
-            '/api/v1/parcels',
+            '/parcels',
             data=json.dumps(dict(
-                pickup='mulago',
-                destination='ntinda',
-                description='This is a smart phone',
-                weight=6,
-                product=786,
+                pickup='Kampala',
+                destination='Kireka',
+                description='parcel',
+                weight=15,
+                product=1,
             )),
             content_type='application/json',
             headers={'token_value': self.token}
@@ -94,21 +89,19 @@ class TestView(TestCase):
 
         resp = json.loads(post.data)
         self.assertEqual(resp['success'], False)
-        self.assertEqual(resp['error']['message'], 'pickup, destination, description, and product should be a string')
+        self.assertEqual(resp['error']['message'], 'Description, Destination, Pickup, and Product should be a strings')
         self.assertEqual(post.status_code, 400)
 
     def test_empty_error(self):
-        """
-        Method for checking empty errors
-        """
+        ### Blank fields ###
         post = self.client().post(
-            '/api/v1/parcels',
+            '/parcels',
             data=json.dumps(dict(
-                pickup='mulago',
+                pickup='Kampala',
                 destination='',
-                description='This is a smart phone',
-                weight=6,
-                product='itel',
+                description='Parcel',
+                weight=12,
+                product='crate',
             )),
             content_type='application/json',
             headers={'token_value': self.token}
@@ -116,20 +109,18 @@ class TestView(TestCase):
 
         resp = json.loads(post.data)
         self.assertEqual(resp['success'], False)
-        self.assertEqual(resp['error']['message'], 'no field should be empty')
+        self.assertEqual(resp['error']['message'], 'All fields are required')
         self.assertEqual(post.status_code, 400)
 
     def test_key_error(self):
-        """
-        Method for checking key errors
-        """
+        ### Missing fields ###
         post = self.client().post(
-            '/api/v1/parcels',
+            '/parcels',
             data=json.dumps(dict(
-                pickup='mulago',
+                pickup='Kampala',
                 destination='',
-                description='This is a smart phone',
-                weight=6,
+                description='parcel',
+                weight=8,
             )),
             content_type='application/json',
             headers={'token_value': self.token}
@@ -137,20 +128,18 @@ class TestView(TestCase):
 
         resp = json.loads(post.data)
         self.assertEqual(resp['success'], False)
-        self.assertEqual(resp['error']['message'], 'some field is missing')
+        self.assertEqual(resp['error']['message'], 'Fields missing')
         self.assertEqual(post.status_code, 400)
 
     def test_content_error(self):
-        """
-        Method for checking content errors
-        """
+        ### Missing content ###
         post = self.client().post(
-            '/api/v1/parcels',
+            '/parcels',
             data=json.dumps(dict(
-                pickup='mulago',
+                pickup='Kampala',
                 destination='',
-                description='This is a smart phone',
-                weight=6,
+                description='parcel',
+                weight=15,
             )),
             content_type='application/javascript',
             headers={'token_value': self.token}
@@ -158,15 +147,13 @@ class TestView(TestCase):
 
         resp = json.loads(post.data)
         self.assertEqual(resp['success'], False)
-        self.assertEqual(resp['error']['message'], 'only json data is allowed')
+        self.assertEqual(resp['error']['message'], 'Jason required')
         self.assertEqual(post.status_code, 400)
 
     def test_get_orders(self):
-        """
-        Method for checking get orders
-        """
+        ### Get orders ###
         post = self.client().get(
-            '/api/v1/parcels',
+            '/parcels',
             content_type='application/json',
             headers={'token_value': self.token}
         )
@@ -176,11 +163,9 @@ class TestView(TestCase):
         self.assertEqual(post.status_code, 200)
 
     def test_single_order(self):
-        """
-        Method for checking single errors
-        """
+        ### single error ###
         post = self.client().get(
-            '/api/v1/parcels/1',
+            '/parcels/1',
             content_type='application/json',
             headers={'token_value': self.token}
         )
@@ -190,11 +175,9 @@ class TestView(TestCase):
         self.assertEqual(post.status_code, 404)
 
     def test_user_order(self):
-        """
-        Method for checking user order
-        """
+        ### User order ###
         post = self.client().get(
-            '/api/v1/users/1/parcels',
+            '/users/1/parcels',
             content_type='application/json',
             headers={'token_value': self.token}
         )
@@ -204,11 +187,9 @@ class TestView(TestCase):
         self.assertEqual(post.status_code, 404)
 
     def test_cancel_order(self):
-        """
-        Method for checking cancel order
-        """
+        ### cancel order ###
         post = self.client().put(
-            '/api/v1/parcels/1/cancel',
+            '/parcels/1/cancel',
             content_type='application/json',
             headers={'token_value': self.token}
         )
