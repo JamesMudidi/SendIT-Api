@@ -1,18 +1,38 @@
 from flask import request
 from flask.views import MethodView
 from api.models.model import Model
-from api.config.validation import validation
+from api.config.data_validation import DataValidation
 
 class Controller(MethodView):
 
     def __init__(self):
-        ### Initialise model object ###
+        """
+        Initialise model object
+        """
         self.parcel = Model()
 
+    def get(self, parcel_id=None, user_id=None):
+        """
+        Retrieve data
+        """
+        if parcel_id is None and user_id is None:
+            return self.parcel.get_order()
+        if user_id is None:
+            return self.parcel.get_order(parcel_id)
+        return self.parcel.get_order_user(user_id)
+
+    def put(self, parcel_id):
+        """
+        Update data in
+        """
+        return self.parcel.cancel_order(parcel_id)
+
     def post(self):
-        ### Add data ###
+        """
+        Add data
+        """
         post_data = request.get_json()
-        value = validation(post_data).validate()
+        value = DataValidation(post_data).validate()
 
         if isinstance(value, bool):
             data = {
@@ -25,17 +45,5 @@ class Controller(MethodView):
                 'product': post_data['product'],
                 'status': 'in-transit'
             }
-            return self.parcel.createOrder(data)
+            return self.parcel.create_order(data)
         return value
-
-    def get(self, parcel_id=None, user_id=None):
-        ### Retrieve data ###
-        if parcel_id is None and user_id is None:
-            return self.parcel.getOrder()
-        if user_id is None:
-            return self.parcel.getOrder(parcel_id)
-        return self.parcel.userOrder(user_id)
-
-    def put(self, parcel_id):
-        ### Update data in ###
-        return self.parcel.cancelOrder(parcel_id)
