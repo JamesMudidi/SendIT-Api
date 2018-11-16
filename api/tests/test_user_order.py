@@ -35,7 +35,6 @@ class TestUserOrder(TestCase):
         })
 
         req = CreateOrder().client().get('/api/v1/users/2/parcels/')
-        resp = json.loads(req.data.decode())
         self.assertEqual(resp['success'], True)
         self.assertEqual(resp['data'][0]['product'], 'crate')
         self.assertEqual(req.status_code, 200)
