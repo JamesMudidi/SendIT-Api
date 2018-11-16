@@ -4,9 +4,7 @@ from api.models.model import Model
 from api.tests.create_order import CreateOrder
 
 class TestCancelOrder(TestCase):
-    """
-    Canceling orders test results
-    """
+    """ Canceling orders test results  """
     def test_cancel_order(self):
         Model.lsts.clear()
         Model.userLst.clear()
