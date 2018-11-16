@@ -40,7 +40,6 @@ class TestView(TestCase):
                 product='crate',
             )),
             content_type='application/json',
-            headers={'token_value': self.token}
         )
 
         resp = json.loads(post.data)
@@ -60,7 +59,6 @@ class TestView(TestCase):
                 product='crate',
             )),
             content_type='application/json',
-            headers={'token_value': self.token}
         )
 
         resp = json.loads(post.data)
@@ -80,7 +78,6 @@ class TestView(TestCase):
                 product=1,
             )),
             content_type='application/json',
-            headers={'token_value': self.token}
         )
 
         resp = json.loads(post.data)
@@ -100,7 +97,6 @@ class TestView(TestCase):
                 product='crate',
             )),
             content_type='application/json',
-            headers={'token_value': self.token}
         )
 
         resp = json.loads(post.data)
@@ -119,7 +115,6 @@ class TestView(TestCase):
                 weight=8,
             )),
             content_type='application/json',
-            headers={'token_value': self.token}
         )
 
         resp = json.loads(post.data)
@@ -138,7 +133,6 @@ class TestView(TestCase):
                 weight=15,
             )),
             content_type='application/javascript',
-            headers={'token_value': self.token}
         )
 
         resp = json.loads(post.data)
@@ -151,7 +145,6 @@ class TestView(TestCase):
         post = self.client().get(
             '/parcels',
             content_type='application/json',
-            headers={'token_value': self.token}
         )
 
         resp = json.loads(post.data)
@@ -163,7 +156,6 @@ class TestView(TestCase):
         post = self.client().get(
             '/parcels/1',
             content_type='application/json',
-            headers={'token_value': self.token}
         )
 
         resp = json.loads(post.data)
@@ -175,7 +167,6 @@ class TestView(TestCase):
         post = self.client().get(
             '/users/1/parcels',
             content_type='application/json',
-            headers={'token_value': self.token}
         )
 
         resp = json.loads(post.data)
@@ -187,7 +178,6 @@ class TestView(TestCase):
         post = self.client().put(
             '/parcels/1/cancel',
             content_type='application/json',
-            headers={'token_value': self.token}
         )
 
         resp = json.loads(post.data)
