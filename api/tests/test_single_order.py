@@ -40,7 +40,6 @@ class TestSingleOrder(TestCase):
         })
 
         req = CreateOrder().client().get('/api/v1/parcels/1')
-        resp = json.loads(req.data.decode())
         self.assertEqual(resp['success'], True)
         self.assertEqual(resp['data']['destination'], 'kireka')
         self.assertEqual(req.status_code, 200)
