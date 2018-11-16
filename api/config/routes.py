@@ -1,6 +1,6 @@
 from api.controllers.controller import Controller
 
-class Routes:
+class routes:
     """
     Routes class
     """
