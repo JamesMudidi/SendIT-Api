@@ -28,7 +28,6 @@ class TestView(TestCase):
             content_type='application/json'
         )
 
-        login_res = json.loads(login.data)
         self.token = login_res['token']
 
     def createOrder(self):
