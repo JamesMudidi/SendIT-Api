@@ -18,7 +18,7 @@ class CreateOrder:
         Create order
         """
         post = self.client().post(
-            '/parcels',
+            '/api/v1/parcels/',
             data=json.dumps(dict(
                 user_id=data['user_id'],
                 pickup=data['pickup'],
